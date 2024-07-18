@@ -19,9 +19,11 @@ classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "trai
               "carrot", "hot dog", "pizza", "donut", "cake", "chair", "sofa", "pottedplant", "bed",
               "diningtable", "toilet", "tvmonitor", "laptop", "mouse", "remote", "keyboard", "cell phone",
               "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors",
-              "teddy bear", "hair drier", "toothbrush"
+              "teddy bear", "hair drier", "toothbrush", "watch"
               ]
 
+
+recognized = []
 
 while True:
     success, img = cap.read()
@@ -41,12 +43,13 @@ while True:
 
             # confidence
             confidence = math.ceil((box.conf[0]*100))/100
-            print("Confidence --->",confidence)
+            # print("Confidence --->",confidence)
 
             # class name
             cls = int(box.cls[0])
-            print("Class name -->", classNames[cls])
-
+            recognized.append(classNames[int(box.cls[0])])
+            # # print("Class name -->", classNames[cls])
+            # print(recognized)
             # object details
             org = [x1, y1]
             font = cv2.FONT_HERSHEY_SIMPLEX
@@ -58,6 +61,7 @@ while True:
 
     cv2.imshow('Webcam', img)
     if cv2.waitKey(1) == ord('q'):
+        print(set(recognized))
         break
 
 cap.release()
