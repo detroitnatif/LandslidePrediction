@@ -2,7 +2,12 @@ from ultralytics import YOLO
 
 model = YOLO('/Users/tylerklimas/Desktop/landslide/best.pt')
 
+md = YOLO('yolov8s')
+
 results = model.track('/Users/tylerklimas/Desktop/landslide/input_video.mp4', save=True)
+
+
+results = md.track('/Users/tylerklimas/Desktop/landslide/input_video.mp4', save=True)
 
 print(results[0]) # prints first frame
 
