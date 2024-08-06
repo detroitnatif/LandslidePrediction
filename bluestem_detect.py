@@ -20,6 +20,3 @@ try:
     project = rf.workspace("tennis-mivzb").project("skipper-proj")
     version = project.version(2)
     dataset = version.download("yolov5")
-
-except TypeError as e:
-    print(f"An error occurred: {e}")
